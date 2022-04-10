@@ -1,0 +1,47 @@
+.cart_design {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  left: 298px;
+  top: 129px;
+
+  background: #a23307;
+  mix-blend-mode: normal;
+  backdrop-filter: blur(4px);
+}
+
+.cart {
+  position: relative;
+}
+
+.cart_design__saladImage {
+  position: absolute;
+  width: 237.97px;
+  height: 250.65px;
+  top: 10.68px;
+}
+
+.cart_design__foodImage {
+  position: absolute;
+  width: 320px;
+  height: 110px;
+  left: 80px;
+  top: 378px;
+}
+
+.cart_design__title {
+  position: absolute;
+  width: 381px;
+  height: 41px;
+  left: 10px;
+  top: 185px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 80;
+  font-size: 44px;
+  line-height: 43px;
+  text-align: center;
+
+  color: #ffffff;
+}

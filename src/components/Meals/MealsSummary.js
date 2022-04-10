@@ -1,14 +1,14 @@
 import classes from './MealsSummary.module.css';
 const mealsSummary = () => {
     return <section className={classes.summary}>
-        <h1>Delicious food, Delivered To You</h1>
+        <h1>Mâncare delicioasă, Livrată la tine</h1>
         <p>
-            Choose your favorite meal from our broad selection of available meals
-            and enjoy a delicious lunch or dinner at home.
+            Alegeți masa preferată din selecția noastră largă de preparate disponibile și
+            bucurați-vă de un prânz sau o cină delicioasă acasă.
         </p>
         <p>
-            All our meals are cooked with high-quality ingredients, just-in-time and
-            of course by experienced chefs!
+            Toate mesele noastre sunt gătite cu ingrediente de înaltă calitate, la timp și,
+            bineînțeles, de bucătari experimentați!
         </p>
     </section>
 
