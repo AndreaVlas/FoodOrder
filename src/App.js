@@ -1,9 +1,11 @@
-import {useState } from "react";
-import Meals from './components/Meals/Meals';
+import { useState } from "react";
+import Meals from "./components/Meals/Meals";
 import Header from "./components/Layout/Header";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
 import MainPage from "./Login/MainPage";
+import AuthCard from "./components/AuthCard/AuthCard";
+import Register from "./pages/Register/Register";
 
 function App() {
   // const [cartIsShown, setCartIsShown] = useState(false);
@@ -16,7 +18,10 @@ function App() {
   //   setCartIsShown(false);
   // }
   return (
-    <MainPage />
+    <div>
+      <Register />
+      <MainPage />
+    </div>
     // <CartProvider>
     //   {cartIsShown && <Cart onClose={hideCartHandler}/>}
     //   <Header onShowCart = {showCartHandler}/>

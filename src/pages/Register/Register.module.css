@@ -1,0 +1,58 @@
+.title {
+  position: absolute;
+  width: 483px;
+  height: 89px;
+  left: -48px;
+  top: 160px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 200;
+  font-size: 39px;
+  line-height: 75px;
+  text-align: center;
+  color: #ffffff;
+}
+.message {
+  position: absolute;
+  width: 393px;
+  height: 59px;
+  left: -1px;
+  top: 235px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 28px;
+  text-align: center;
+  font-weight: lighter;
+  color: #ffffff;
+}
+.avatar {
+  position: absolute;
+  width: 40px;
+  height: 32px;
+  left: 194px;
+  top: 5px;
+}
+
+.form {
+  position: absolute;
+  top: 60px;
+  margin: 20px;
+}
+
+.form input{
+  margin-top: 13px;
+}
+
+.formButton{
+height: 39px;
+left: 12px;
+position: absolute;
+background: #A23307;
+top: 250px;
+width: 300px;
+border-radius: 7px;
+color: #ffffff;
+}
+

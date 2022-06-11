@@ -1,0 +1,22 @@
+.cart {
+  width: 850px;
+  height: 550px;
+  background-color: white;
+  position: absolute;
+  left: 330px;
+  top: 100px;
+}
+.cart_header {
+  position: absolute;
+  width: 394px;
+  height: 550px;
+  background: #a23307;
+  mix-blend-mode: normal;
+  backdrop-filter: blur(4px);
+}
+
+.cart_content {
+  position: absolute;
+  right: 440px;
+  top: 20px;
+}
