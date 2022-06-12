@@ -7,7 +7,7 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 200;
-  font-size: 39px;
+  font-size: 30px;
   line-height: 75px;
   text-align: center;
   color: #ffffff;
@@ -21,7 +21,7 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 28px;
   text-align: center;
   font-weight: lighter;
@@ -37,22 +37,21 @@
 
 .form {
   position: absolute;
-  top: 60px;
+  top: 80px;
   margin: 20px;
 }
 
-.form input{
+.form input {
   margin-top: 13px;
 }
 
-.formButton{
-height: 39px;
-left: 12px;
-position: absolute;
-background: #A23307;
-top: 250px;
-width: 300px;
-border-radius: 7px;
-color: #ffffff;
+.formButton {
+  height: 39px;
+  left: 12px;
+  position: absolute;
+  background: #a23307;
+  top: 250px;
+  width: 300px;
+  border-radius: 7px;
+  color: #ffffff;
 }
-

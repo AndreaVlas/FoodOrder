@@ -3,32 +3,54 @@ import Meals from "./components/Meals/Meals";
 import Header from "./components/Layout/Header";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
-import MainPage from "./Login/MainPage";
-import AuthCard from "./components/AuthCard/AuthCard";
 import Register from "./pages/Register/Register";
+import { useUserContext } from "./context/userContext";
+import Login from "./pages/Login/Login";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
-  // const [cartIsShown, setCartIsShown] = useState(false);
+  const { user } = useUserContext();
 
-  // const showCartHandler =() =>{
-  //   setCartIsShown(true);
-  // }
+  const [cartIsShown, setCartIsShown] = useState(false);
 
-  // const hideCartHandler =()=>{
-  //   setCartIsShown(false);
-  // }
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
+
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
   return (
     <div>
-      <Register />
-      <MainPage />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/menus"
+            element={
+              <CartProvider>
+                {cartIsShown && <Cart onClose={hideCartHandler} />}
+                <Header onShowCart={showCartHandler} />
+                <main>
+                  <Meals />
+                </main>
+              </CartProvider>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              user ? (
+                <Navigate to="/menus" replace />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
-    // <CartProvider>
-    //   {cartIsShown && <Cart onClose={hideCartHandler}/>}
-    //   <Header onShowCart = {showCartHandler}/>
-    //   <main>
-    //     <Meals />
-    //   </main>
-    //   </CartProvider>
   );
 }
 
