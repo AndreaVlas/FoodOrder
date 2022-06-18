@@ -39,6 +39,7 @@ export const UserContextProvider = ({ children }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await sendEmailVerification(auth.currentUser);
+      localStorage.setItem("emailVerification", email);
       updateProfile(auth.currentUser, {
         displayName: name,
       });

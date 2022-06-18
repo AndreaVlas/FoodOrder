@@ -5,15 +5,25 @@ import password from "../../assets/password.png";
 import salad from "../../assets/salad.png";
 import food from "../../assets/food.png";
 import Register from "../Register/Register";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useUserContext } from "../../context/userContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const mode = searchParams.get("mode");
+    if (mode === "verifyEmail") {
+      const userEmail = localStorage.getItem("emailVerification") || "";
+      emailRef.current.value = userEmail;
+      localStorage.removeItem("emailVerification");
+    }
+  }, []);
 
   const { signInUser } = useUserContext();
 
