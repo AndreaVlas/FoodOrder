@@ -21,7 +21,18 @@ const Cart = (props) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
 
-  const orderHandler = () => {};
+  // const orderHandler = (userData) => {
+  //   fetch(
+  //     "https://foodorderapp-c2463-default-rtdb.firebaseio.com/orders.json",
+  //     {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         user: userData,
+  //         orderedItems: cartCtx.items,
+  //       }),
+  //     }
+  //   );
+  // };
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
@@ -51,9 +62,7 @@ const Cart = (props) => {
           Închide
         </button>
         {hasItems && date && (
-          <button className={classes.button} onClick={orderHandler}>
-            Comandă
-          </button>
+          <button className={classes.button}>Comandă</button>
         )}
       </div>
     </Modal>

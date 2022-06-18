@@ -4,6 +4,8 @@ import classes from "./Register.module.css";
 import avatar from "../../assets/user-avatar.png";
 import Input from "./Input";
 import { useUserContext } from "../../context/userContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [nameValue, setNameValue] = useState("");
@@ -12,10 +14,29 @@ const Register = () => {
 
   const { registerUser } = useUserContext();
 
+  // const checkInputFill = () => {
+  //   if (nameValue.trim().length == 0) {
+  //     toast.error("Name is empty");
+  //   } else if (emailValue.trim().length == 0) {
+  //     toast.error("Email is empty");
+  //   } else if (passwordValue.trim().length == 0) {
+  //     toast.error("Password is empty");
+  //   }
+  // };
+
   const onSubmit = (e) => {
-    e.preventDefault();
-    if (nameValue && emailValue && passwordValue)
-      registerUser(nameValue, emailValue, passwordValue);
+    if (emailValue.includes("@student.usv.ro")) {
+      // e.preventDefault();
+      if (nameValue && emailValue && passwordValue) {
+        registerUser(nameValue, emailValue, passwordValue);
+        toast.info("Verifica emailul pentru logare!");
+      }
+    } else {
+      toast.error("Invalid email adress");
+    }
+    // setNameValue("");
+    // setEmailValue("");
+    // setPasswordValue("");
   };
   return (
     <AuthCard
@@ -47,7 +68,13 @@ const Register = () => {
                 value={passwordValue}
                 onChange={(newValue) => setPasswordValue(newValue)}
               />
-              <button className={classes.formButton} onClick={onSubmit}>
+              <button
+                className={classes.formButton}
+                onClick={() => {
+                  // checkInputFill();
+                  onSubmit();
+                }}
+              >
                 Register
               </button>
             </div>
