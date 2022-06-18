@@ -8,6 +8,7 @@ import Register from "../Register/Register";
 import { useRef } from "react";
 import { useUserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const emailRef = useRef();
@@ -22,9 +23,23 @@ const Login = () => {
     const password = passwordRef.current.value;
 
     if (email && password) {
-      signInUser(email, password).then(() => {
-        navigate("/menus");
-      });
+      signInUser(email, password)
+        .then(() => {
+          navigate("/menus");
+        })
+        .catch((err) => {
+          const errorCode = err.code;
+          if (
+            errorCode === "auth/user-not-found" ||
+            errorCode === "auth/wrong-password"
+          ) {
+            toast.error("Email sau parola gresita");
+          } else {
+            toast.error("Serviciu momentan indisponibil");
+          }
+
+          console.log(JSON.stringify(err));
+        });
     }
     // props.onConfirm({
     //   emai: email,

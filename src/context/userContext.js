@@ -34,18 +34,20 @@ export const UserContextProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const registerUser = (name, email, password) => {
+  const registerUser = async (name, email, password) => {
     setLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async () => {
-        await sendEmailVerification(auth.currentUser);
-        updateProfile(auth.currentUser, {
-          displayName: name,
-        });
-      })
-      .then((res) => console.log(res))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      await sendEmailVerification(auth.currentUser);
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
   };
 
   // const signInUser = (email, password) => {
@@ -62,19 +64,16 @@ export const UserContextProvider = ({ children }) => {
   const signInUser = async (email, password) => {
     setLoading(true);
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      return res;
+      return await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
-      console.log(err);
       setError(err.code);
+      throw err;
     } finally {
       setLoading(false);
     }
   };
 
-  const logoutUser = () => {
-    signOut(auth);
-  };
+  const logoutUser = () => signOut(auth);
 
   const contextValue = {
     user,

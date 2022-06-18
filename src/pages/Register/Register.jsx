@@ -28,11 +28,18 @@ const Register = () => {
     if (emailValue.includes("@student.usv.ro")) {
       // e.preventDefault();
       if (nameValue && emailValue && passwordValue) {
-        registerUser(nameValue, emailValue, passwordValue);
-        toast.info("Verifica emailul pentru logare!");
+        registerUser(nameValue, emailValue, passwordValue)
+          .then(() => {
+            toast.info("Verifica emailul pentru logare!");
+          })
+          .catch(() => {
+            toast.error(
+              "Problema!!!!!!!!!! andrea e urata :( :D da o iubesc <3 :D :P SPPER SA UITI ASTA AICI :D"
+            );
+          });
       }
     } else {
-      toast.error("Invalid email adress");
+      toast.error("Invalid email address");
     }
     // setNameValue("");
     // setEmailValue("");

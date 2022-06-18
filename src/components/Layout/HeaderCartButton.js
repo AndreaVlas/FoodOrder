@@ -10,7 +10,7 @@ const HeaderCartButton = (props) => {
   const navigate = useNavigate();
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   const cartCtx = useContext(CartContext);
-  const { signOut } = useUserContext();
+  const { logoutUser } = useUserContext();
 
   const { items } = cartCtx;
 
@@ -38,7 +38,7 @@ const HeaderCartButton = (props) => {
   }, [items]);
 
   const logout = (email, password) => {
-    signOut(email, password).then(() => {
+    logoutUser(email, password).then(() => {
       navigate("/login");
     });
   };
