@@ -119,6 +119,7 @@
   background: rgba(162, 51, 7, 0.71);
   border-radius: 5px;
   color: white;
+  cursor: pointer;
 }
 .emailImg {
   position: absolute;

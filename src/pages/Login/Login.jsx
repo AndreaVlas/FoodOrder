@@ -7,8 +7,9 @@ import food from "../../assets/food.png";
 import Register from "../Register/Register";
 import { useEffect, useRef } from "react";
 import { useUserContext } from "../../context/userContext";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
+
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Login = () => {
   const emailRef = useRef();
@@ -27,15 +28,28 @@ const Login = () => {
 
   const { signInUser } = useUserContext();
 
+  const checkInputFill = () => {
+    if (
+      emailRef.current.value.trim().length == 0 ||
+      passwordRef.current.value.trim().length == 0
+    ) {
+      toast.error("Completați vă rog toate casetele!");
+    }
+  };
+
   const onSubmit = (e) => {
-    e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
     if (email && password) {
       signInUser(email, password)
-        .then(() => {
-          navigate("/menus");
+        .then((a) => {
+          console.log(a.user);
+          if (a.user.emailVerified === true) {
+            navigate("/menus");
+          } else {
+            toast.error("Vă rugăm confirmați emailul!");
+          }
         })
         .catch((err) => {
           const errorCode = err.code;
@@ -47,17 +61,12 @@ const Login = () => {
           } else {
             toast.error("Serviciu momentan indisponibil");
           }
-
-          console.log(JSON.stringify(err));
         });
     }
-    // props.onConfirm({
-    //   emai: email,
-    // });
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form>
       <AuthCard
         leftSideContent={
           <>
@@ -70,7 +79,7 @@ const Login = () => {
         }
         rightSideContent={
           <div>
-            <h1 className={classes.cart_form__title}>Să începem.</h1>
+            <h1 className={classes.cart_form__title}>Înregistrare.</h1>
             <div className={classes.cart_form__component}>
               <h1 className={classes.cart_form__quest}>
                 Nu aveți încă un cont?{" "}
@@ -91,12 +100,19 @@ const Login = () => {
                 <img src={email} className={classes.emailImg} />
                 <h1 className={classes.cart_formPassword}>Parolă</h1>
                 <input
-                  type="text"
+                  type="password"
                   className={classes.cart_formPassword_Input}
                   ref={passwordRef}
                 />
                 <img src={password} className={classes.passwordImg} />
-                <button type="submit" className={classes.cart_formButton}>
+                <button
+                  type="button"
+                  className={classes.cart_formButton}
+                  onClick={() => {
+                    checkInputFill();
+                    onSubmit();
+                  }}
+                >
                   Login
                 </button>
               </div>

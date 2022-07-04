@@ -6,15 +6,11 @@ import CartProvider from "./store/CartProvider";
 import Register from "./pages/Register/Register";
 import { useUserContext } from "./context/userContext";
 import Login from "./pages/Login/Login";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  Switch,
-} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import FetchData from "./fetchData/FetchData";
 
 function App() {
   const { user } = useUserContext();
@@ -34,24 +30,28 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route
-            path="/menus"
-            element={
-              <CartProvider>
-                {cartIsShown && <Cart onClose={hideCartHandler} />}
-                <Header onShowCart={showCartHandler} />
-                <main>
-                  <Meals />
-                </main>
-              </CartProvider>
-            }
-          />
+          <Route path="/admin" element={<FetchData />} />
+          {
+            <Route
+              path="/menus"
+              element={
+                <CartProvider>
+                  {cartIsShown && <Cart onClose={hideCartHandler} />}
+                  <Header onShowCart={showCartHandler} />
+                  <main>
+                    <Meals />
+                  </main>
+                </CartProvider>
+              }
+            />
+          }
           <Route
             path="*"
             element={
               user ? (
                 <Navigate to="/menus" replace />
               ) : (
+                // <Navigate to="/admin" replace />
                 <Navigate to="/login" replace />
               )
             }

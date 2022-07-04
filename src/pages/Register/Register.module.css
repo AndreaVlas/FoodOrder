@@ -37,7 +37,7 @@
 
 .form {
   position: absolute;
-  top: 80px;
+  top: 110px;
   margin: 20px;
 }
 
@@ -45,13 +45,72 @@
   margin-top: 13px;
 }
 
-.formButton {
+.formRegisterButton {
   height: 39px;
-  left: 12px;
+  left: 0px;
   position: absolute;
   background: #a23307;
   top: 250px;
-  width: 300px;
+  width: 320px;
   border-radius: 7px;
   color: #ffffff;
+  cursor: pointer;
+}
+.formLoginButton {
+  height: 39px;
+  left: 0px;
+  position: absolute;
+  background: #a23307;
+  top: 310px;
+  width: 320px;
+  border-radius: 7px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.cart_form__title {
+  position: absolute;
+  width: 328px;
+  height: 54px;
+  left: 22px;
+  top: 25px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 26px;
+  line-height: 42px;
+  color: #000000;
+  font-weight: bold;
+}
+.cart_form__quest {
+  position: absolute;
+  width: 413px;
+  height: 81px;
+  left: 22px;
+  top: 67px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+
+  color: #000000;
+}
+.cart_form__sign {
+  position: absolute;
+  width: 413px;
+  left: 178px;
+  top: -12px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 28px;
+
+  color: #8a2b06;
+}
+
+.cart_form__component {
+  display: flex;
 }

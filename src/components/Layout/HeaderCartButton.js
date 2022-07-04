@@ -52,7 +52,7 @@ const HeaderCartButton = (props) => {
         <span>Coșul de cumpărături</span>
         <span className={classes.badge}>{numberOfCartItems}</span>
       </button>
-      <button onClick={logout} className={btnClasses}>
+      <button onClick={logout} className={classes.btnLogout}>
         <span>Logout</span>
       </button>
     </div>
