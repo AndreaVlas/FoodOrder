@@ -51,7 +51,6 @@ function App() {
               user ? (
                 <Navigate to="/menus" replace />
               ) : (
-                // <Navigate to="/admin" replace />
                 <Navigate to="/login" replace />
               )
             }

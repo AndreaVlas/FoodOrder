@@ -51,17 +51,6 @@ export const UserContextProvider = ({ children }) => {
     }
   };
 
-  // const signInUser = (email, password) => {
-  //   setLoading(true);
-  //   signInWithEmailAndPassword(auth, email, password)
-  //     .then((res) => console.log(res))
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setError(err.code);
-  //     })
-  //     .finally(() => setLoading(false));
-  // };
-
   const signInUser = async (email, password) => {
     setLoading(true);
     try {

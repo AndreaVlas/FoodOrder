@@ -44,12 +44,13 @@ const Login = () => {
     if (email && password) {
       signInUser(email, password)
         .then((a) => {
-          console.log(a.user);
-          if (a.user.emailVerified === true) {
-            navigate("/menus");
-          } else {
-            toast.error("Vă rugăm confirmați emailul!");
-          }
+          navigate("/menus");
+          // console.log(a.user);
+          // if (a.user.emailVerified === true) {
+          //   navigate("/menus");
+          // } else {
+          //   toast.error("Vă rugăm confirmați emailul!");
+          // }
         })
         .catch((err) => {
           const errorCode = err.code;
